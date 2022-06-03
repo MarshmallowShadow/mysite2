@@ -3,8 +3,6 @@
 
 <%
 	UserVo authUser = (UserVo)session.getAttribute("authUser");
-	System.out.println(authUser);
-	
 	UserVo uVo = (UserVo)request.getAttribute("uVo");
 	String gender = uVo.getGender();
 %>
@@ -13,7 +11,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>수정</title>
 		<link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
 		<link href="/mysite2/assets/css/user.css" rel="stylesheet" type="text/css">
 		
@@ -27,18 +25,11 @@
 					<a href="/mysite2/main?">MySite</a>
 				</h1>
 				
-				<% if(authUser == null) {%> <%-- 로그인 실패, 로그인 전 --%>
-					<ul>
-						<li><a href="/mysite2/user?action=loginForm" class="btn_s">로그인</a></li>
-						<li><a href="/mysite2/user?action=joinForm" class="btn_s">회원가입</a></li>
-					</ul>
-				<% } else { %> <%-- 로그인 성공~~ --%>
-					<ul>
-						<li><%=authUser.getName() %>님 안녕하세요 ^^</li>
-						<li><a href="/mysite2/user?action=logout" class="btn_s">로그아웃</a></li>
-						<li><a href="/mysite2/user?action=modifyForm" class="btn_s">회원정보수정</a></li>
-					</ul>
-				<% }%>
+				<ul>
+					<li><%=authUser.getName() %>님 안녕하세요 ^^</li>
+					<li><a href="/mysite2/user?action=logout" class="btn_s">로그아웃</a></li>
+					<li><a href="/mysite2/user?action=modifyForm" class="btn_s">회원정보수정</a></li>
+				</ul>
 			
 			</div>
 			<!-- //header -->
@@ -48,7 +39,7 @@
 					<li><a href="">입사지원서</a></li>
 					<li><a href="">게시판</a></li>
 					<li><a href="">갤러리</a></li>
-					<li><a href="">방명록</a></li>
+					<li><a href="./gbc?action=addList">방명록</a></li>
 				</ul>
 			</div>
 			<!-- //nav -->
@@ -83,7 +74,6 @@
 						<div id="modifyForm">
 							<form action="/mysite2/user?" method="post">
 								<input type="hidden" name="action" value="modify">
-								<input type="hidden" name="no" value="<%=uVo.getNo() %>">
 								<input type="hidden" name="id" value="<%=uVo.getId() %>">
 								<!-- 아이디 -->
 								<div class="form-group">
@@ -135,7 +125,7 @@
 			<!-- //container  -->
 	
 			<div id="footer">
-				Copyright ⓒ 2020 황일영. All right reserved
+				Copyright ⓒ 2022 MarshmallowShadow. All rights reserved.
 			</div>
 			<!-- //footer -->
 			

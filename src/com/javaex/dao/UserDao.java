@@ -75,18 +75,16 @@ public class UserDao {
 			
 			String query = "";
 			query += " update	users";
-			query += " set		id = ?,";
-			query += "			password = ?,";
+			query += " set		password = ?,";
 			query += " 			name = ?,";
 			query += " 			gender = ?";
 			query += " where no = ?";
 			
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, uVo.getId());
-			pstmt.setString(2, uVo.getPassword());
-			pstmt.setString(3, uVo.getName());
-			pstmt.setString(4, uVo.getGender());
-			pstmt.setInt(5, uVo.getNo());
+			pstmt.setString(1, uVo.getPassword());
+			pstmt.setString(2, uVo.getName());
+			pstmt.setString(3, uVo.getGender());
+			pstmt.setInt(4, uVo.getNo());
 			
 			count = pstmt.executeUpdate();
 			
@@ -123,6 +121,41 @@ public class UserDao {
 		
 		close();
 		return count;
+	}
+	
+	public UserVo getUser(UserVo uVo) {
+		UserVo authUser = null;
+		
+		try {
+			getConnection();
+			
+			String query = "";
+			query += " select	no,";
+			query += " 			name";
+			query += " from users";
+			query += " where id = ?";
+			query += " and password = ?";
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, uVo.getId());
+			pstmt.setString(2, uVo.getPassword());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int no = rs.getInt(1);
+				String name = rs.getString(2);
+				
+				authUser = new UserVo();
+				authUser.setNo(no);
+				authUser.setName(name);
+			}
+		} catch(SQLException e) {
+			System.out.println("error: " + e);
+		}
+		
+		close();
+		return authUser;
 	}
 	
 	public UserVo getUser(int no) {
@@ -163,40 +196,5 @@ public class UserDao {
 		
 		close();
 		return uVo;
-	}
-	
-	public UserVo getUser(UserVo uVo) {
-		UserVo authUser = null;
-		
-		try {
-			getConnection();
-			
-			String query = "";
-			query += " select	no,";
-			query += " 			name";
-			query += " from users";
-			query += " where id = ?";
-			query += " and password = ?";
-			
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, uVo.getId());
-			pstmt.setString(2, uVo.getPassword());
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				int no = rs.getInt(1);
-				String name = rs.getString(2);
-				
-				authUser = new UserVo();
-				authUser.setNo(no);
-				authUser.setName(name);
-			}
-		} catch(SQLException e) {
-			System.out.println("error: " + e);
-		}
-		
-		close();
-		return authUser;
 	}
 }

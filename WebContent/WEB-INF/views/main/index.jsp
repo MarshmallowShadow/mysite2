@@ -3,7 +3,6 @@
 
 <%
 	UserVo authUser = (UserVo)session.getAttribute("authUser");
-	System.out.println(authUser);
 %>
 
 <!DOCTYPE html>
@@ -31,8 +30,8 @@
 			<% } else { %> <%-- 로그인 성공~~ --%>
 				<ul>
 					<li><%=authUser.getName() %>님 안녕하세요 ^^</li>
-					<li><a href="/mysite2/user?action=logout" class="btn_s">로그아웃</a></li>
-					<li><a href="/mysite2/user?action=modifyForm&no=<%=authUser.getNo() %>" class="btn_s">회원정보수정</a></li>
+					<li><a href="./user?action=logout" class="btn_s">로그아웃</a></li>
+					<li><a href="./user?action=modifyForm" class="btn_s">회원정보수정</a></li>
 				</ul>
 			<% }%>
 			
@@ -44,7 +43,7 @@
 				<li><a href="">입사지원서</a></li>
 				<li><a href="">게시판</a></li>
 				<li><a href="">갤러리</a></li>
-				<li><a href="">방명록</a></li>
+				<li><a href="./gbc?action=addList">방명록</a></li>
 			</ul>
 		</div>
 		<!-- //nav -->
@@ -75,7 +74,7 @@
 							<br>
 							(자유롭게 꾸며보세요!!)<br>
 							<br><br>
-							<a class="" href="">[방명록에 글 남기기]</a>
+							<a class="" href="./gbc?action=addList">[방명록에 글 남기기]</a>
 						</p>	
 					</div>
 					<!-- //greetings -->

@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>로그인</title>
 		<link href="/mysite2/assets/css/mysite.css" rel="stylesheet" type="text/css">
 		<link href="/mysite2/assets/css/user.css" rel="stylesheet" type="text/css">
 	</head>
@@ -36,7 +36,7 @@
 					<li><a href="">입사지원서</a></li>
 					<li><a href="">게시판</a></li>
 					<li><a href="">갤러리</a></li>
-					<li><a href="">방명록</a></li>
+					<li><a href="./gbc?action=addList">방명록</a></li>
 				</ul>
 			</div>
 			<!-- //nav -->
@@ -101,7 +101,7 @@
 			<!-- //container  -->
 	
 			<div id="footer">
-				Copyright ⓒ 2020 황일영. All right reserved
+				Copyright ⓒ 2022 MarshmallowShadow. All rights reserved.
 			</div>
 			<!-- //footer -->
 	
