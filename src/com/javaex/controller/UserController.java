@@ -67,13 +67,16 @@ public class UserController extends HttpServlet {
 			String gender = request.getParameter("gender");
 			int no = Integer.parseInt(request.getParameter("no"));
 			
-			UserVo uVo = new UserVo();
-			uVo.setName(name);
-			uVo.setPassword(password);
-			uVo.setGender(gender);
-			uVo.setNo(no);
+			UserVo authUser = new UserVo();
+			authUser.setName(name);
+			authUser.setPassword(password);
+			authUser.setGender(gender);
+			authUser.setNo(no);
 			
-			uDao.update(uVo);
+			uDao.update(authUser);
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("authUser", authUser);
 			
 			WebUtil.redirect(request, response, "./main?");
 		}
