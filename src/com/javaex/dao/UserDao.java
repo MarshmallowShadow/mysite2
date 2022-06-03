@@ -75,7 +75,7 @@ public class UserDao {
 			
 			String query = "";
 			query += " update	users";
-			query += " set		id = ?";
+			query += " set		id = ?,";
 			query += "			password = ?,";
 			query += " 			name = ?,";
 			query += " 			gender = ?";
