@@ -59,9 +59,8 @@ public class UserController extends HttpServlet {
 			}
 		}
 		else if("modifyForm".equals(action)) {
-			String id = request.getParameter("id");
-			UserVo uVo = uDao.getUser(id);
-			System.out.println(uVo);
+			int no = Integer.parseInt(request.getParameter("no"));
+			UserVo uVo = uDao.getUser(no);
 			request.setAttribute("uVo", uVo);
 			
 			WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");

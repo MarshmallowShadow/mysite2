@@ -125,27 +125,27 @@ public class UserDao {
 		return count;
 	}
 	
-	public UserVo getUser(String id) {
+	public UserVo getUser(int no) {
 		UserVo uVo = null;
 		
 		try {
 			getConnection();
 			
 			String query = "";
-			query += " select	no,";
-			query += "			password";
+			query += " select	id,";
+			query += "			password,";
 			query += " 			name,";
 			query += "			gender";
 			query += " from users";
-			query += " where id = ?";
+			query += " where no = ?";
 			
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, id);
+			pstmt.setInt(1, no);
 			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				int no = rs.getInt(1);
+				String id = rs.getString(1);
 				String password = rs.getString(2);
 				String name = rs.getString(3);
 				String gender = rs.getString(4);
