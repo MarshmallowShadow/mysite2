@@ -4,6 +4,7 @@
 <%
 	UserVo authUser = (UserVo)session.getAttribute("authUser");
 	System.out.println(authUser);
+	String gender = authUser.getGender();
 %>
 
 <!DOCTYPE html>
@@ -81,6 +82,7 @@
 							<form action="/mysite2/user?" method="post">
 								<input type="hidden" name="action" value="modify">
 								<input type="hidden" name="no" value="<%=authUser.getNo() %>">
+								<input type="hidden" name="id" value="<%=authUser.getId() %>">
 								<!-- 아이디 -->
 								<div class="form-group">
 									<label class="form-text" for="input-uid">아이디</label> 
@@ -100,29 +102,17 @@
 								</div>
 		
 								<!-- //나이 -->
-								<%if(authUser.getGender().equals("male")) { %>
+								
 								<div class="form-group">
 									<span class="form-text">성별</span> 
 									
 									<label for="rdo-male">남</label> 
-									<input type="radio" id="rdo-male" name="gender" value="male" checked> 
+									<input type="radio" id="rdo-male" name="gender" value="male" <%if(gender.equals("male")) { %>checked<%} %>> 
 									
 									<label for="rdo-female">여</label> 
-									<input type="radio" id="rdo-female" name="gender" value="female" > 
+									<input type="radio" id="rdo-female" name="gender" value="female" <%if(gender.equals("female")) { %>checked<%} %>> 
 		
 								</div>
-								<%} else { %>
-								<div class="form-group">
-									<span class="form-text">성별</span> 
-									
-									<label for="rdo-male">남</label> 
-									<input type="radio" id="rdo-male" name="gender" value="male" > 
-									
-									<label for="rdo-female">여</label> 
-									<input type="radio" id="rdo-female" name="gender" value="female" checked> 
-		
-								</div>
-								<%} %>
 		
 								<!-- 버튼영역 -->
 								<div class="button-area">

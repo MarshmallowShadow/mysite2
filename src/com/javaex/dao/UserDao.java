@@ -75,16 +75,18 @@ public class UserDao {
 			
 			String query = "";
 			query += " update	users";
-			query += " set		password = ?,";
+			query += " set		id = ?";
+			query += "			password = ?,";
 			query += " 			name = ?,";
 			query += " 			gender = ?";
 			query += " where no = ?";
 			
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, uVo.getPassword());
-			pstmt.setString(2, uVo.getName());
-			pstmt.setString(3, uVo.getGender());
-			pstmt.setInt(4, uVo.getNo());
+			pstmt.setString(1, uVo.getId());
+			pstmt.setString(2, uVo.getPassword());
+			pstmt.setString(3, uVo.getName());
+			pstmt.setString(4, uVo.getGender());
+			pstmt.setInt(5, uVo.getNo());
 			
 			count = pstmt.executeUpdate();
 			

@@ -62,12 +62,14 @@ public class UserController extends HttpServlet {
 			WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");
 		}
 		else if("modify".equals(action)) {
+			String id = request.getParameter("id");
 			String name = request.getParameter("name");
 			String password = request.getParameter("password");
 			String gender = request.getParameter("gender");
 			int no = Integer.parseInt(request.getParameter("no"));
 			
 			UserVo authUser = new UserVo();
+			authUser.setId(id);
 			authUser.setName(name);
 			authUser.setPassword(password);
 			authUser.setGender(gender);
