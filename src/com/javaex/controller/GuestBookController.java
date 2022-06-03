@@ -25,17 +25,17 @@ public class GuestBookController extends HttpServlet {
 		GuestBookDao gDao = new GuestBookDao();
 		String action = request.getParameter("action");
 		
-		if("addList".equals(action)) {
+		if("addList".equals(action)) { //방명록 페이지
 			List<GuestVo> gList = gDao.getList();
 			
 			request.setAttribute("gList", gList);
 			
 			WebUtil.forward(request, response, "WEB-INF/views/guestbook/addList.jsp");
 		}
-		else if("deleteForm".equals(action)) {
+		else if("deleteForm".equals(action)) { //삭제 확인 (비밀번호 입력)
 			WebUtil.forward(request, response, "WEB-INF/views/guestbook/deleteForm.jsp");
 		}
-		else if("add".equals(action)) {
+		else if("add".equals(action)) { //방명록에 추가 시도
 			String name = request.getParameter("name");
 			String password = request.getParameter("password");
 			String content = request.getParameter("content");
@@ -46,7 +46,7 @@ public class GuestBookController extends HttpServlet {
 			
 			WebUtil.redirect(request, response, "./gbc?action=addList");
 		}
-		else if("delete".equals(action)) {
+		else if("delete".equals(action)) { //비밀번호 확인 후 삭제 시도
 			int no = Integer.parseInt(request.getParameter("no"));
 			String password = request.getParameter("password");
 			

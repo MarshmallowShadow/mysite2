@@ -22,10 +22,10 @@ public class UserController extends HttpServlet {
 		UserDao uDao = new UserDao();
 		String action = request.getParameter("action");
 		
-		if("joinForm".equals(action)) {
+		if("joinForm".equals(action)) { //수정폼
 			WebUtil.forward(request, response, "/WEB-INF/views/user/joinForm.jsp");
 		}
-		else if("join".equals(action)) {
+		else if("join".equals(action)) { //가입폼 제출 후 가입
 			String id = request.getParameter("id");
 			String password = request.getParameter("password");
 			String name = request.getParameter("name");
@@ -37,10 +37,10 @@ public class UserController extends HttpServlet {
 			
 			WebUtil.forward(request, response, "/WEB-INF/views/user/joinOk.jsp");
 		}
-		else if("loginForm".equals(action)) {
+		else if("loginForm".equals(action)) { //로그인 페이지
 			WebUtil.forward(request, response, "/WEB-INF/views/user/loginForm.jsp");
 		}
-		else if("login".equals(action)) {
+		else if("login".equals(action)) { //로그인 시도
 			String id = request.getParameter("id");
 			String password = request.getParameter("password");
 			
@@ -54,11 +54,11 @@ public class UserController extends HttpServlet {
 				
 				HttpSession session = request.getSession();
 				session.setAttribute("authUser", authUser);
-				
-				WebUtil.redirect(request, response, "./main?");
 			}
+			
+			WebUtil.redirect(request, response, "./main?");
 		}
-		else if("modifyForm".equals(action)) {
+		else if("modifyForm".equals(action)) { //회원정보 수정
 			HttpSession session = request.getSession();
 			UserVo authUser = (UserVo)session.getAttribute("authUser");
 			
@@ -69,32 +69,37 @@ public class UserController extends HttpServlet {
 			
 			WebUtil.forward(request, response, "/WEB-INF/views/user/modifyForm.jsp");
 		}
-		else if("modify".equals(action)) {
+		else if("modify".equals(action)) { //수정 시도
 			HttpSession session = request.getSession();
 			UserVo authUser = (UserVo)session.getAttribute("authUser");
 			
-			String id = request.getParameter("id");
-			String name = request.getParameter("name");
-			String password = request.getParameter("password");
-			String gender = request.getParameter("gender");
-			int no = authUser.getNo();
-			
-			UserVo uVo = new UserVo(no, id, password, name, gender);
-			
-			uDao.update(uVo);
-			
-			authUser = uDao.getUser(uVo);
-			
-			session.setAttribute("authUser", authUser);
+			if(authUser != null)  {
+				String id = request.getParameter("id");
+				String name = request.getParameter("name");
+				String password = request.getParameter("password");
+				String gender = request.getParameter("gender");
+				int no = authUser.getNo();
+				
+				UserVo uVo = new UserVo(no, id, password, name, gender);
+				
+				uDao.update(uVo);
+				
+				authUser = uDao.getUser(uVo);
+				
+				session.setAttribute("authUser", authUser);
+		    }
 			
 			WebUtil.redirect(request, response, "./main?");
 		}
-		else if("logout".equals(action)) {
+		else if("logout".equals(action)) { //로그아웃
 			HttpSession session = request.getSession();
 			session.removeAttribute("authUser");
 			session.invalidate();
 			
 			WebUtil.redirect(request, response, "./main?");
+		}
+		else {
+			System.out.println("unknown action");
 		}
 	}
 	
