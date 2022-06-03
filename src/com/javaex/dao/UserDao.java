@@ -75,7 +75,7 @@ public class UserDao {
 			
 			String query = "";
 			query += " update	users";
-			query += " set		passsword = ?,";
+			query += " set		password = ?,";
 			query += " 			name = ?,";
 			query += " 			gender = ?";
 			query += " where no = ?";
@@ -131,7 +131,8 @@ public class UserDao {
 			
 			String query = "";
 			query += " select	no,";
-			query += " 			name";
+			query += " 			name,";
+			query += "			gender";
 			query += " from users";
 			query += " where id = ?";
 			query += " and password = ?";
@@ -145,11 +146,14 @@ public class UserDao {
 			if(rs.next()) {
 				int no = rs.getInt(1);
 				String name = rs.getString(2);
+				String gender = rs.getString(3);
 				
 				authUser = new UserVo();
 				authUser.setNo(no);
 				authUser.setName(name);
+				authUser.setGender(gender);
 				authUser.setId(uVo.getId());
+				authUser.setPassword(uVo.getPassword());
 			}
 		} catch(SQLException e) {
 			System.out.println("error: " + e);
