@@ -81,10 +81,10 @@ public class UserDao {
 			query += " where no = ?";
 			
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(2, uVo.getPassword());
-			pstmt.setString(3, uVo.getName());
-			pstmt.setString(4, uVo.getGender());
-			pstmt.setInt(1, uVo.getNo());
+			pstmt.setString(1, uVo.getPassword());
+			pstmt.setString(2, uVo.getName());
+			pstmt.setString(3, uVo.getGender());
+			pstmt.setInt(4, uVo.getNo());
 			
 			count = pstmt.executeUpdate();
 			
