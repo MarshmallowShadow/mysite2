@@ -4,7 +4,9 @@
 <%
 	UserVo authUser = (UserVo)session.getAttribute("authUser");
 	System.out.println(authUser);
-	String gender = authUser.getGender();
+	
+	UserVo uVo = (UserVo)request.getAttribute("uVo");
+	String gender = uVo.getGender();
 %>
 
 <!DOCTYPE html>
@@ -81,24 +83,24 @@
 						<div id="modifyForm">
 							<form action="/mysite2/user?" method="post">
 								<input type="hidden" name="action" value="modify">
-								<input type="hidden" name="no" value="<%=authUser.getNo() %>">
-								<input type="hidden" name="id" value="<%=authUser.getId() %>">
+								<input type="hidden" name="no" value="<%=uVo.getNo() %>">
+								<input type="hidden" name="id" value="<%=uVo.getId() %>">
 								<!-- 아이디 -->
 								<div class="form-group">
 									<label class="form-text" for="input-uid">아이디</label> 
-									<span class="text-large bold"><%=authUser.getId() %></span>
+									<span class="text-large bold"><%=uVo.getId() %></span>
 								</div>
 		
 								<!-- 비밀번호 -->
 								<div class="form-group">
 									<label class="form-text" for="input-pass">패스워드</label> 
-									<input type="password" id="input-pass" name="password" value="<%=authUser.getPassword() %>" placeholder="비밀번호를 입력하세요"	>
+									<input type="password" id="input-pass" name="password" value="<%=uVo.getPassword() %>" placeholder="비밀번호를 입력하세요">
 								</div>
 		
 								<!-- 이메일 -->
 								<div class="form-group">
 									<label class="form-text" for="input-name">이름</label> 
-									<input type="text" id="input-name" name="name" value="<%=authUser.getName() %>" placeholder="이름을 입력하세요">
+									<input type="text" id="input-name" name="name" value="<%=uVo.getName() %>" placeholder="이름을 입력하세요">
 								</div>
 		
 								<!-- //나이 -->

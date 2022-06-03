@@ -125,6 +125,46 @@ public class UserDao {
 		return count;
 	}
 	
+	public UserVo getUser(String id) {
+		UserVo uVo = null;
+		
+		try {
+			getConnection();
+			
+			String query = "";
+			query += " select	no,";
+			query += "			password";
+			query += " 			name,";
+			query += "			gender";
+			query += " from users";
+			query += " where id = ?";
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int no = rs.getInt(1);
+				String password = rs.getString(2);
+				String name = rs.getString(3);
+				String gender = rs.getString(4);
+				
+				uVo = new UserVo();
+				uVo.setNo(no);
+				uVo.setPassword(password);
+				uVo.setName(name);
+				uVo.setGender(gender);
+				uVo.setId(id);
+			}
+		} catch(SQLException e) {
+			System.out.println("error: " + e);
+		}
+		
+		close();
+		return uVo;
+	}
+	
 	public UserVo getUser(UserVo uVo) {
 		UserVo authUser = null;
 		
@@ -133,8 +173,7 @@ public class UserDao {
 			
 			String query = "";
 			query += " select	no,";
-			query += " 			name,";
-			query += "			gender";
+			query += " 			name";
 			query += " from users";
 			query += " where id = ?";
 			query += " and password = ?";
@@ -148,14 +187,10 @@ public class UserDao {
 			if(rs.next()) {
 				int no = rs.getInt(1);
 				String name = rs.getString(2);
-				String gender = rs.getString(3);
 				
 				authUser = new UserVo();
 				authUser.setNo(no);
 				authUser.setName(name);
-				authUser.setGender(gender);
-				authUser.setId(uVo.getId());
-				authUser.setPassword(uVo.getPassword());
 			}
 		} catch(SQLException e) {
 			System.out.println("error: " + e);
