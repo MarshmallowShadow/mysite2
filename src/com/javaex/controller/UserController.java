@@ -42,7 +42,7 @@ public class UserController extends HttpServlet {
 		}
 		else if("login".equals(action)) { //로그인 시도
 			String id = request.getParameter("id");
-			String password = request.getParameter("password");
+			String password = request.getParameter("password"); 
 			
 			UserVo uVo = new UserVo(id, password);
 			UserVo authUser = uDao.getUser(uVo);
