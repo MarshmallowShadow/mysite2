@@ -2,7 +2,6 @@
 <%@ page import="com.javaex.vo.UserVo"%>
 
 <%
-	UserVo authUser = (UserVo)session.getAttribute("authUser");
 	UserVo uVo = (UserVo)request.getAttribute("uVo");
 	String gender = uVo.getGender();
 %>
