@@ -20,19 +20,8 @@
 	<body>
 		<div id="wrap">
 	
-			<div id="header" class="clearfix">
-				<h1>
-					<a href="/mysite2/main?">MySite</a>
-				</h1>
-				
-				<ul>
-					<li><%=authUser.getName() %>님 안녕하세요 ^^</li>
-					<li><a href="/mysite2/user?action=logout" class="btn_s">로그아웃</a></li>
-					<li><a href="/mysite2/user?action=modifyForm" class="btn_s">회원정보수정</a></li>
-				</ul>
-			
-			</div>
 			<!-- //header -->
+			<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
 	
 			<div id="nav">
 				<ul class="clearfix">
