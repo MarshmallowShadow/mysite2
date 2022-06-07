@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.javaex.vo.UserVo"%>
-
-<%
-	UserVo uVo = (UserVo)request.getAttribute("uVo");
-	String gender = uVo.getGender();
-%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
@@ -55,23 +50,23 @@
 						<div id="modifyForm">
 							<form action="/mysite2/user?" method="post">
 								<input type="hidden" name="action" value="modify">
-								<input type="hidden" name="id" value="<%=uVo.getId() %>">
+								<input type="hidden" name="id" value="${requestScope.uVo.id }">
 								<!-- 아이디 -->
 								<div class="form-group">
 									<label class="form-text" for="input-uid">아이디</label> 
-									<span class="text-large bold"><%=uVo.getId() %></span>
+									<span class="text-large bold">${requestScope.uVo.id }</span>
 								</div>
 		
 								<!-- 비밀번호 -->
 								<div class="form-group">
 									<label class="form-text" for="input-pass">패스워드</label> 
-									<input type="password" id="input-pass" name="password" value="<%=uVo.getPassword() %>" placeholder="비밀번호를 입력하세요">
+									<input type="password" id="input-pass" name="password" value="${requestScope.uVo.password }" placeholder="비밀번호를 입력하세요">
 								</div>
 		
 								<!-- 이메일 -->
 								<div class="form-group">
 									<label class="form-text" for="input-name">이름</label> 
-									<input type="text" id="input-name" name="name" value="<%=uVo.getName() %>" placeholder="이름을 입력하세요">
+									<input type="text" id="input-name" name="name" value="${requestScope.uVo.name }" placeholder="이름을 입력하세요">
 								</div>
 		
 								<!-- //나이 -->
@@ -80,10 +75,10 @@
 									<span class="form-text">성별</span> 
 									
 									<label for="rdo-male">남</label> 
-									<input type="radio" id="rdo-male" name="gender" value="male" <%if(gender.equals("male")) { %>checked<%} %>> 
+									<input type="radio" id="rdo-male" name="gender" value="male" <c:if test="${requestScope.uVo.gender=='male'}">checked</c:if>> 
 									
 									<label for="rdo-female">여</label> 
-									<input type="radio" id="rdo-female" name="gender" value="female" <%if(gender.equals("female")) { %>checked<%} %>> 
+									<input type="radio" id="rdo-female" name="gender" value="female" <c:if test="${requestScope.uVo.gender=='female'}">checked</c:if>> 
 		
 								</div>
 		
