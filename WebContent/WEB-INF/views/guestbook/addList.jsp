@@ -16,10 +16,10 @@
 		<div id="wrap">
 	
 			<!-- //header -->
-			<jsp:include page="/WEB-INF/views/includes/header.jsp"></jsp:include>
+			<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 	
 			<!-- //nav -->
-			<jsp:include page="/WEB-INF/views/includes/nav.jsp"></jsp:include>
+			<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 		
 			<div id="container" class="clearfix">
 				<div id="aside">
@@ -106,7 +106,7 @@
 			<!-- //container  -->
 	
 			<!-- //footer -->
-			<jsp:include page="/WEB-INF/views/includes/footer.jsp"></jsp:include>
+			<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 		</div>
 		<!-- //wrap -->
 	
