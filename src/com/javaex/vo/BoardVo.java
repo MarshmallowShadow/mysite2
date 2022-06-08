@@ -11,13 +11,10 @@ public class BoardVo extends UserVo {
 	public BoardVo() {
 		super();
 	}
-	public BoardVo(String title, String content, int userNo) {
+	public BoardVo(int no, String title, String content, int hit, String regDate, int userNo) {
 		this.title = title;
 		this.content = content;
 		this.userNo = userNo;
-	}
-	public BoardVo(int no, String title, String content, int hit, String regDate, int userNo) {
-		this(title, content, userNo);
 		this.no = no;
 		this.hit = hit;
 		this.regDate = regDate;
@@ -26,6 +23,7 @@ public class BoardVo extends UserVo {
 		this(no, title, content, hit, regDate, userNo);
 		super.setName(name);
 	}
+	
 	public int getNo() {
 		return no;
 	}

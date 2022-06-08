@@ -80,11 +80,15 @@ public class BoardDao {
 			getConnection();
 			
 			String query = "";
-			query += " ";
+			query += " delete from board";
+			query += " where no=?";
 			
 			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, no);
 			
 			count = pstmt.executeUpdate();
+			
+			System.out.println(count + "건이 삭제되었습니다.");
 			
 		} catch(SQLException e) {
 			System.out.println("error: " + e);
@@ -125,11 +129,19 @@ public class BoardDao {
 			getConnection();
 			
 			String query = "";
-			query += " ";
+			query += " update	board";
+			query += " set		title = ?,";
+			query += " 			content = ?";
+			query += " where	no = ?";
 			
 			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, bVo.getTitle());
+			pstmt.setString(2, bVo.getContent());
+			pstmt.setInt(3, bVo.getNo());
 			
 			count = pstmt.executeUpdate();
+			
+			System.out.println(count + "건이 수정되었습니다.");
 			
 		} catch(SQLException e) {
 			System.out.println("error: " + e);
