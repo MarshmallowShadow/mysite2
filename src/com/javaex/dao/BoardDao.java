@@ -162,7 +162,8 @@ public class BoardDao {
 			query += " 		title,";
 			query += " 		hit,";
 			query += " 		to_char(reg_date,'YY-MM-DD HH24:MM'),";
-			query += " 		name";
+			query += " 		name,";
+			query += " 		user_no";
 			query += " from users u, board b";
 			query += " where user_no = u.no";
 			
@@ -177,6 +178,7 @@ public class BoardDao {
 				int hit = rs.getInt(3);
 				String regDate = rs.getString(4);
 				String name = rs.getString(5);
+				int userNo = rs.getInt(6);
 				
 				BoardVo bVo = new BoardVo();
 				bVo.setNo(no);
@@ -184,6 +186,7 @@ public class BoardDao {
 				bVo.setHit(hit);
 				bVo.setRegDate(regDate);
 				bVo.setName(name);
+				bVo.setUserNo(userNo);
 				
 				bList.add(bVo);
 			}
