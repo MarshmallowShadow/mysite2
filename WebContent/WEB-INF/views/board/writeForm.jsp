@@ -47,7 +47,7 @@
 		
 					<div id="board">
 						<div id="writeForm">
-							<form action="./bc?" method="get">
+							<form action="./board?" method="get">
 								<input type="hidden" name="action" value="write">
 								<input type="hidden" name="userNo" value="${authUser.no}">
 								<!-- 제목 -->

@@ -22,10 +22,10 @@ public class GuestBookController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		
-		GuestBookDao gDao = new GuestBookDao();
 		String action = request.getParameter("action");
 		
 		if("addList".equals(action)) { //방명록 페이지
+			GuestBookDao gDao = new GuestBookDao();
 			List<GuestVo> gList = gDao.getList();
 			
 			request.setAttribute("gList", gList);
@@ -40,6 +40,7 @@ public class GuestBookController extends HttpServlet {
 			String password = request.getParameter("password");
 			String content = request.getParameter("content");
 			
+			GuestBookDao gDao = new GuestBookDao();
 			GuestVo gVo = new GuestVo(name, password, content);
 			
 			gDao.insert(gVo);
@@ -50,6 +51,7 @@ public class GuestBookController extends HttpServlet {
 			int no = Integer.parseInt(request.getParameter("no"));
 			String password = request.getParameter("password");
 			
+			GuestBookDao gDao = new GuestBookDao();
 			int confirm = gDao.delete(no, password);
 			
 			if(confirm > 0) {
@@ -59,7 +61,7 @@ public class GuestBookController extends HttpServlet {
 			}
 		}
 		else {
-			System.out.println("unknown action");
+			System.out.println("알 수 없는 action");
 		}
 	}
 	

@@ -47,7 +47,7 @@
 		
 					<div id="board">
 						<div id="modifyForm">
-							<form action="./bc?" method="get">
+							<form action="./board?" method="get">
 								<input type="hidden" name="action" value="modify">
 								<input type="hidden" name="no" value="${param.no }">
 								<!-- 작성자 -->
@@ -81,7 +81,7 @@
 									<textarea id="txt-content" name="content">${bVo.content }</textarea>
 								</div>
 								
-								<a id="btn_cancel" href="./bc?action=read&no=${param.no }">취소</a>
+								<a id="btn_cancel" href="./board?action=read&no=${param.no }">취소</a>
 								<button id="btn_modify" type="submit" >수정</button>
 							</form>
 							<!-- //form -->

@@ -80,9 +80,9 @@
 								</div>
 								
 								<c:if test="${authUser.no == bVo.userNo }">
-									<a id="btn_modify" href="./bc?action=modifyForm&no=${param.no }">수정</a>
+									<a id="btn_modify" href="./board?action=modifyForm&no=${param.no }">수정</a>
 								</c:if>
-								<a id="btn_modify" href="./bc?action=list">목록</a>
+								<a id="btn_modify" href="./board?action=list">목록</a>
 								
 							</form>
 							<!-- //form -->

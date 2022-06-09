@@ -8,13 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import com.javaex.dao.BoardDao;
 import com.javaex.util.WebUtil;
 import com.javaex.vo.BoardVo;
 
-@WebServlet("/bc")
+@WebServlet("/board")
 public class BoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,14 +34,14 @@ public class BoardController extends HttpServlet {
 			BoardDao bDao = new BoardDao();
 			bDao.delete(no);
 			
-			WebUtil.redirect(request, response, "./bc?action=list");
+			WebUtil.redirect(request, response, "./board?action=list");
 		}
 		else if("writeForm".equals(action)) {
 			WebUtil.forward(request, response, "/WEB-INF/views/board/writeForm.jsp");
 		}
 		else if("write".equals(action)) {
 			String title = request.getParameter("title");
-			String content = request.getParameter("content");
+			String content = request.getParameter("content").replace("\n", "<br>");
 			int userNo = Integer.parseInt(request.getParameter("userNo"));
 			
 			BoardDao bDao = new BoardDao();
@@ -53,7 +51,7 @@ public class BoardController extends HttpServlet {
 			bVo.setUserNo(userNo);
 			bDao.insert(bVo);
 			
-			WebUtil.redirect(request, response, "./bc?action=list");
+			WebUtil.redirect(request, response, "./board?action=list");
 		}
 		else if("read".equals(action)) {
 			int no = Integer.parseInt(request.getParameter("no"));
@@ -71,13 +69,15 @@ public class BoardController extends HttpServlet {
 			BoardDao bDao = new BoardDao();
 			BoardVo bVo = bDao.getBoard(no);
 			
+			bVo.setContent(bVo.getContent().replace("<br>", ""));
+					
 			request.setAttribute("bVo", bVo);
 			
 			WebUtil.forward(request, response, "/WEB-INF/views/board/modifyForm.jsp");
 		}
 		else if("modify".equals(action)) {
 			String title = request.getParameter("title");
-			String content = request.getParameter("content");
+			String content = request.getParameter("content").replace("\n", "<br>");
 			int no = Integer.parseInt(request.getParameter("no"));
 			
 			BoardDao bDao = new BoardDao();
@@ -87,7 +87,16 @@ public class BoardController extends HttpServlet {
 			bVo.setNo(no);
 			bDao.modify(bVo);
 			
-			WebUtil.redirect(request, response, "./bc?action=read&no=" + no);
+			WebUtil.redirect(request, response, "./board?action=read&no=" + no);
+		}
+		else if("search".equals(action)) {
+			String keyword = request.getParameter("keyword");
+			BoardDao bDao = new BoardDao();
+			
+			List<BoardVo> bList = bDao.search(keyword);
+			request.setAttribute("bList", bList);
+			
+			WebUtil.forward(request, response, "/WEB-INF/views/board/list.jsp");
 		}
 		
 	}

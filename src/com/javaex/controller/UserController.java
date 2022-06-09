@@ -19,7 +19,6 @@ public class UserController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		UserDao uDao = new UserDao();
 		String action = request.getParameter("action");
 		
 		if("joinForm".equals(action)) { //수정폼
@@ -31,6 +30,7 @@ public class UserController extends HttpServlet {
 			String name = request.getParameter("name");
 			String gender = request.getParameter("gender");
 			
+			UserDao uDao = new UserDao();
 			UserVo uVo = new UserVo(id, password, name, gender);
 			System.out.println(uVo);
 			uDao.userInsert(uVo);
@@ -44,6 +44,7 @@ public class UserController extends HttpServlet {
 			String id = request.getParameter("id");
 			String password = request.getParameter("password"); 
 			
+			UserDao uDao = new UserDao();
 			UserVo uVo = new UserVo(id, password);
 			UserVo authUser = uDao.getUser(uVo);
 			
@@ -60,6 +61,7 @@ public class UserController extends HttpServlet {
 		}
 		else if("modifyForm".equals(action)) { //회원정보 수정
 			HttpSession session = request.getSession();
+			UserDao uDao = new UserDao();
 			UserVo authUser = (UserVo)session.getAttribute("authUser");
 			
 			int no = authUser.getNo();
@@ -80,6 +82,7 @@ public class UserController extends HttpServlet {
 				String gender = request.getParameter("gender");
 				int no = authUser.getNo();
 				
+				UserDao uDao = new UserDao();
 				UserVo uVo = new UserVo(no, id, password, name, gender);
 				
 				uDao.update(uVo);
@@ -99,7 +102,7 @@ public class UserController extends HttpServlet {
 			WebUtil.redirect(request, response, "./main?");
 		}
 		else {
-			System.out.println("unknown action");
+			System.out.println("알 수 없는 action");
 		}
 	}
 	

@@ -63,6 +63,6 @@ public class BoardVo extends UserVo {
 	
 	@Override
 	public String toString() {
-		return "BoardVo[no=" + no + ", title=" + title + ", content" + content + ", hit=" + hit + ", regDate=" + regDate + ", userNo=" + userNo + "]";
+		return "BoardVo[no=" + no + ", title=" + title + ", content=" + content + ", hit=" + hit + ", regDate=" + regDate + ", userNo=" + userNo + "]";
 	}
 }

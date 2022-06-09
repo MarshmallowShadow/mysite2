@@ -47,9 +47,10 @@
 		
 					<div id="board">
 						<div id="list">
-							<form action="" method="">
+							<form action="./board?action=search" method="get">
 								<div class="form-group text-right">
-									<input type="text">
+									<input type="hidden" name="action" value="search">
+									<input type="text" name="keyword" value="">
 									<button type="submit" id=btn_search>검색</button>
 								</div>
 							</form>
@@ -68,13 +69,13 @@
 									<c:forEach items="${bList}" var="bVo">
 										<tr>
 											<td>${bVo.no }</td>
-											<td class="text-left"><a href="./bc?action=read&no=${bVo.no }">${bVo.title }</a></td>
+											<td class="text-left"><a href="./board?action=read&no=${bVo.no }">${bVo.title }</a></td>
 											<td>${bVo.name }</td>
 											<td>${bVo.hit }</td>
 											<td>${bVo.regDate }</td>
 											<td>
 												<c:if test="${authUser.no == bVo.userNo }">
-													<a href="./bc?action=delete&no=${bVo.no }">[삭제]</a>
+													<a href="./board?action=delete&no=${bVo.no }">[삭제]</a>
 												</c:if>
 											</td>
 										</tr>
@@ -103,7 +104,7 @@
 							</div>
 							<c:choose>
 								<c:when test="${authUser == null }"></c:when>
-								<c:otherwise><a id="btn_write" href="./bc?action=writeForm">글쓰기</a></c:otherwise>
+								<c:otherwise><a id="btn_write" href="./board?action=writeForm">글쓰기</a></c:otherwise>
 							</c:choose>
 						
 						</div>
