@@ -151,56 +151,11 @@ public class BoardDao {
 		return count;
 	}
 	
-	public List<BoardVo> getList() {
+	public List<BoardVo> getList(String keyword){
 		List<BoardVo> bList = new ArrayList<>();
-		
-		try {
-			getConnection();
-			
-			String query = "";
-			query += " select b.no,";
-			query += " 		title,";
-			query += " 		hit,";
-			query += " 		to_char(reg_date,'YY-MM-DD HH24:MM'),";
-			query += " 		name,";
-			query += " 		user_no";
-			query += " from users u, board b";
-			query += " where user_no = u.no";
-			
-			
-			pstmt = conn.prepareStatement(query);
-			
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				int no = rs.getInt(1);
-				String title = rs.getString(2);
-				int hit = rs.getInt(3);
-				String regDate = rs.getString(4);
-				String name = rs.getString(5);
-				int userNo = rs.getInt(6);
-				
-				BoardVo bVo = new BoardVo();
-				bVo.setNo(no);
-				bVo.setTitle(title);
-				bVo.setHit(hit);
-				bVo.setRegDate(regDate);
-				bVo.setName(name);
-				bVo.setUserNo(userNo);
-				
-				bList.add(bVo);
-			}
-			
-		} catch(SQLException e) {
-			System.out.println("error: " + e);
+		if(keyword==null) {
+			keyword = "";
 		}
-		
-		close();
-		return bList;
-	}
-	
-	public List<BoardVo> search(String keyword){
-		List<BoardVo> bList = new ArrayList<>();
 		
 		try {
 			getConnection();
@@ -216,7 +171,6 @@ public class BoardDao {
 			query += " where user_no = u.no";
 			query += " and (title like ?";
 			query += " or name like ?)";
-			
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, "%" + keyword + "%");

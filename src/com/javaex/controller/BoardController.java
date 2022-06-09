@@ -21,9 +21,11 @@ public class BoardController extends HttpServlet {
 		String action = request.getParameter("action");
 		
 		if("list".equals(action)) {
+			String keyword = request.getParameter("keyword");
 			BoardDao bDao = new BoardDao();
 			
-			List<BoardVo> bList = bDao.getList();
+			List<BoardVo> bList = bDao.getList(keyword);
+			
 			request.setAttribute("bList", bList);
 			
 			WebUtil.forward(request, response, "/WEB-INF/views/board/list.jsp");
@@ -88,15 +90,6 @@ public class BoardController extends HttpServlet {
 			bDao.modify(bVo);
 			
 			WebUtil.redirect(request, response, "./board?action=read&no=" + no);
-		}
-		else if("search".equals(action)) {
-			String keyword = request.getParameter("keyword");
-			BoardDao bDao = new BoardDao();
-			
-			List<BoardVo> bList = bDao.search(keyword);
-			request.setAttribute("bList", bList);
-			
-			WebUtil.forward(request, response, "/WEB-INF/views/board/list.jsp");
 		}
 		
 	}
