@@ -7,7 +7,7 @@ public class TestApp {
 	public static void main(String[] args) {
 		BoardDao boardDao = new BoardDao();
 		
-		List<BoardVo> boardVo = boardDao.getList();
+		List<BoardVo> boardVo = boardDao.getList("");
 		System.out.println(boardVo);
 	}
 }
