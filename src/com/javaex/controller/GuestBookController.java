@@ -49,6 +49,7 @@ public class GuestBookController extends HttpServlet {
 		}
 		else if("delete".equals(action)) { //비밀번호 확인 후 삭제 시도
 			int no = Integer.parseInt(request.getParameter("no"));
+			System.out.println(no);
 			String password = request.getParameter("password");
 			
 			GuestBookDao gDao = new GuestBookDao();
@@ -57,7 +58,7 @@ public class GuestBookController extends HttpServlet {
 			if(confirm > 0) {
 				WebUtil.redirect(request, response, "./gbc?action=addList");
 			} else {
-				WebUtil.redirect(request, response, "./gbc?action=deleteForm&no=" + no);
+				WebUtil.redirect(request, response, ("./gbc?action=deleteForm&no=" + no));
 			}
 		}
 		else {

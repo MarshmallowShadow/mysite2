@@ -61,8 +61,8 @@
 									<td><a href="./main?">[메인으로 돌아가기]</a></td>
 								</tr>
 							</table>
-							<input type='hidden' name="action" value="delete">
-							<input type='hidden' name="no" value="${param.no }">
+							<input type="hidden" name="action" value="delete">
+							<input type="hidden" name="no" value="${param.no }">
 						</form>
 						
 					</div>

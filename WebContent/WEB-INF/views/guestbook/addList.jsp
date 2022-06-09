@@ -88,7 +88,7 @@
 									<td>${g.no }</td>
 									<td>${g.name }</td>
 									<td>${g.regDate }</td>
-									<td><a href="./gbc?action=deleteForm&no=${g.no }>">[삭제]</a></td>
+									<td><a href="./gbc?action=deleteForm&no=${g.no }">[삭제]</a></td>
 								</tr>
 								<tr>
 									<td colspan=4 class="text-left">${g.content }</td>
