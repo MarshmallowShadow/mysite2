@@ -42,6 +42,7 @@ public class GuestBookDao {
 	}
 	
 	
+	//글 추가
 	public int insert(GuestVo gVo) {
 		int count = -1;
 		
@@ -70,6 +71,7 @@ public class GuestBookDao {
 	}
 	
 	
+	//글 삭제 (비번 확인 필수)
 	public int delete(int no, String password) {
 		int count = -1;
 		
@@ -98,6 +100,7 @@ public class GuestBookDao {
 	}
 	
 	
+	//addList에 글 목록 가져오기
 	public List<GuestVo> getList() {
 		List<GuestVo> gList = new ArrayList<>();
 		

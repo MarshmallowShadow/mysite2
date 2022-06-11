@@ -46,6 +46,7 @@ public class BoardDao {
 		}
 	}
 	
+	//글 작성 후에 추가
 	public int insert(BoardVo bVo) {
 		int count = -1;
 		
@@ -73,6 +74,7 @@ public class BoardDao {
 		return count;
 	}
 	
+	//글 삭제
 	public int delete(int no) {
 		int count = -1;
 		
@@ -98,6 +100,7 @@ public class BoardDao {
 		return count;
 	}
 	
+	//게시글 누를때마다 조회수 1개 오르기
 	public int plusView(int no) {
 		int count = -1;
 		
@@ -122,6 +125,7 @@ public class BoardDao {
 		return count;
 	}
 	
+	//게시글 제목, 내용 수정
 	public int modify(BoardVo bVo) {
 		int count = -1;
 		
@@ -151,6 +155,7 @@ public class BoardDao {
 		return count;
 	}
 	
+	//게시판에 나열할 게시글 목록 가져오기
 	public List<BoardVo> getList(String keyword){
 		List<BoardVo> bList = new ArrayList<>();
 		if(keyword==null) {
@@ -205,6 +210,8 @@ public class BoardDao {
 		return bList;
 	}
 	
+	
+	//read에 필요한 해당 개시글에 정보 가져오기
 	public BoardVo getBoard(int no) {
 		BoardVo bVo = new BoardVo();
 		
