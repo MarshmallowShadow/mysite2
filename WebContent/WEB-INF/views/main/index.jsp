@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%-- jstl 이용시 필수 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -13,10 +14,10 @@
 	<body>
 		<div id="wrap">
 	
-			<!-- //header -->
+			<!-- //jstl header -->
 			<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
 	
-			<!-- //nav -->
+			<!-- //jstl nav -->
 			<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 			
 			<div id="container" class="clearfix">
@@ -44,6 +45,7 @@
 								<br>
 								(자유롭게 꾸며보세요!!)<br>
 								<br><br>
+								<%-- guestbook링크 url --%>
 								<a class="" href="./gbc?action=addList">[방명록에 글 남기기]</a>
 							</p>	
 						</div>
@@ -61,7 +63,7 @@
 			</div>
 			<!-- //container -->
 			
-			<!-- //footer -->
+			<!-- //jstl footer -->
 			<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>
 	
 		</div>
