@@ -46,7 +46,11 @@
 					<!-- //content-head -->
 		
 					<div id="guestbook">
+						<%-- 삭제 확인 폼 (비밀번호 입력) --%>
 						<form action="./gbc" method="post">
+							<%-- 삭제에 추가로 필요한 action이랑 no 저장 --%>
+							<input type="hidden" name="action" value="delete">
+							<input type="hidden" name="no" value="${param.no }">
 							<table id="guestDelete">
 								<colgroup>
 									<col style="width: 10%;">
@@ -58,11 +62,9 @@
 									<td>비밀번호</td>
 									<td><input type="password" name="password"></td>
 									<td class="text-left"><button type="submit">삭제</button></td>
-									<td><a href="./main?">[메인으로 돌아가기]</a></td>
+									<td><a href="./main?">[메인으로 돌아가기]</a></td> <%-- 삭제취소 --%>
 								</tr>
 							</table>
-							<input type="hidden" name="action" value="delete">
-							<input type="hidden" name="no" value="${param.no }">
 						</form>
 						
 					</div>

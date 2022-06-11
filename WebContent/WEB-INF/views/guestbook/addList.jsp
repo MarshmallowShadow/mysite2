@@ -46,6 +46,7 @@
 					<!-- //content-head -->
 	
 					<div id="guestbook">
+						<%-- 방병록 작성 폼 --%>
 						<form action="./gbc" method="post">
 							<input type="hidden" name="action" value="add">
 							<table id="guestAdd">
@@ -76,6 +77,7 @@
 							
 						</form>	
 						
+						<%-- 글 목록 반복문으로 나열 --%>
 						<c:forEach items="${gList}" var="g" varStatus="status">
 							<table class="guestRead">
 								<colgroup>
