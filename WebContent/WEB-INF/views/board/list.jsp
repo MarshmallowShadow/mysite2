@@ -66,6 +66,7 @@
 									</tr>
 								</thead>
 								<tbody>
+									<%-- 컨트롤러에 받은 bList로 게시글 나열 --%>
 									<c:forEach items="${bList}" var="bVo">
 										<tr>
 											<td>${bVo.no }</td>

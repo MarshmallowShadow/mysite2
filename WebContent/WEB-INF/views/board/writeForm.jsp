@@ -47,7 +47,9 @@
 		
 					<div id="board">
 						<div id="writeForm">
+							<%-- 게시글 작성 폼 --%>
 							<form action="./board?" method="get">
+								<%-- 추가로 필요한 정보들: action=write, authUser에 저장된 사용자 번호(no)를 userNo로 저장 --%>
 								<input type="hidden" name="action" value="write">
 								<input type="hidden" name="userNo" value="${authUser.no}">
 								<!-- 제목 -->

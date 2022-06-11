@@ -47,7 +47,8 @@
 		
 					<div id="board">
 						<div id="read">
-							<form action="#" method="get">
+							<form action="./board?" method="get">
+								<%-- 컨트롤러가 보내준 Vo를 통해서 정보들 넣어주기 --%>
 								<!-- 작성자 -->
 								<div class="form-group">
 									<span class="form-text">작성자</span>

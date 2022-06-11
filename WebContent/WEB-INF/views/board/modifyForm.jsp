@@ -47,7 +47,9 @@
 		
 					<div id="board">
 						<div id="modifyForm">
+							<%-- 수정폼 (컨트롤러가 보낸 정보들 해당 의치에 넣어주기) --%>
 							<form action="./board?" method="get">
+								<%-- action이랑 no hidden으로 저장 --%>
 								<input type="hidden" name="action" value="modify">
 								<input type="hidden" name="no" value="${param.no }">
 								<!-- 작성자 -->
