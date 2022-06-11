@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.javaex.util.*;
 
+//메인 페이지 서블릿 이름 지정
 @WebServlet("/main")
 public class MainController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

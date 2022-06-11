@@ -13,10 +13,10 @@
 	
 	<body>
 		<div id="wrap">
-	
+			
 			<!-- //jstl header -->
 			<c:import url="/WEB-INF/views/includes/header.jsp"></c:import>
-	
+			
 			<!-- //jstl nav -->
 			<c:import url="/WEB-INF/views/includes/nav.jsp"></c:import>
 			

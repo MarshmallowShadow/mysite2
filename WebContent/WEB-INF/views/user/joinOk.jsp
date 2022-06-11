@@ -51,6 +51,7 @@
 							<p class="text-large bold">
 								회원가입을 축하합니다.<br>
 								<br>
+								<%-- 로그인 폼 이동 --%>
 								<a href="/mysite2/user?action=loginForm" >[로그인하기]</a>
 							</p>
 								

@@ -48,10 +48,17 @@
 		
 					<div id="user">
 						<div id="modifyForm">
+							<%-- request에 보낸 정보들 꺼내기 --%>
 							<form action="/mysite2/user?" method="post">
+								<!-- action이랑 id값들 보낼 수 있게 "hidden" input으로 "저장" -->
 								<input type="hidden" name="action" value="modify">
 								<input type="hidden" name="id" value="${requestScope.uVo.id }">
+								
+								
+								<%-- 아래부터 uVo에 저장된 정보들 꺼내서 해당 input value에 저장 --%>
+								
 								<!-- 아이디 -->
+								<%-- id는 span에 저장되 있으므로 controller로 못보낸다는 점 주의--%>
 								<div class="form-group">
 									<label class="form-text" for="input-uid">아이디</label> 
 									<span class="text-large bold">${requestScope.uVo.id }</span>
@@ -71,6 +78,7 @@
 		
 								<!-- //나이 -->
 								
+								<%-- 남성 여성에 따라서 해당 gender 라디오에 checked --%>
 								<div class="form-group">
 									<span class="form-text">성별</span> 
 									

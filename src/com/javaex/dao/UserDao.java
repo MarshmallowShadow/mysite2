@@ -1,7 +1,5 @@
 package com.javaex.dao;
 
-import java.io.*;
-import java.util.*;
 import java.sql.*;
 import com.javaex.vo.UserVo;
 
@@ -39,6 +37,7 @@ public class UserDao {
 		}
 	}
 	
+	//회원가입 (아이디, 비밀번호, 이름, 성별 저장된 UserVo필요)
 	public int userInsert(UserVo uVo) {
 		int count = -1;
 		
@@ -67,6 +66,7 @@ public class UserDao {
 		return count;
 	}
 	
+	//회원정보 수정 (아이디, 비밀번호, 이름, 성별 저장된 UserVo필요)
 	public int update(UserVo uVo) {
 		int count = -1;
 		
@@ -78,13 +78,13 @@ public class UserDao {
 			query += " set		password = ?,";
 			query += " 			name = ?,";
 			query += " 			gender = ?";
-			query += " where no = ?";
+			query += " where id = ?";
 			
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, uVo.getPassword());
 			pstmt.setString(2, uVo.getName());
 			pstmt.setString(3, uVo.getGender());
-			pstmt.setInt(4, uVo.getNo());
+			pstmt.setString(4, uVo.getId());
 			
 			count = pstmt.executeUpdate();
 			
@@ -98,6 +98,7 @@ public class UserDao {
 		return count;
 	}
 	
+	//회원 탈퇴 (지금은 필요 없음)
 	public int delete(int no) {
 		int count = -1;
 		
@@ -123,6 +124,7 @@ public class UserDao {
 		return count;
 	}
 	
+	//로그인 (아이디, 비밀번호 들어간 UserVo필수, 회원번호(no), 이름 들어간 authUser 리턴)
 	public UserVo getUser(UserVo uVo) {
 		UserVo authUser = null;
 		
@@ -158,6 +160,7 @@ public class UserDao {
 		return authUser;
 	}
 	
+	//수정 폼 들어가기 전에 필요한 전보 가져오기 (authUser에 있던 no 가져오고 아이디, 비번, 이름, 성별 저장된 UserVo리턴)
 	public UserVo getUser(int no) {
 		UserVo uVo = null;
 		

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%-- UserVo, jstl 필수 --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="com.javaex.vo.UserVo"%>
+<%@ page import="com.javaex.vo.UserVo"%>	
 
 <!-- html태그 없어도 됨 -->
 <div id="header" class="clearfix">
